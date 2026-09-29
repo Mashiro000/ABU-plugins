@@ -1,2 +1,4 @@
 *.abu-plugin
 *.pem
+node_modules/
+pnpm-lock.yaml

@@ -24,9 +24,10 @@ ABU Launcher 0.03 及以上版本已默认配置本仓库。打开“设置 → 
 ```bash
 npm run build:index
 npm run check:index
+npm run verify:assets
 ```
 
-Pull Request 会自动检查插件目录、ID、全部版本、权限、HTTPS 下载地址、SHA-256、公钥、签名、排序和索引一致性。合并到 `main` 后，GitHub Actions 会把最新版索引同步到固定的 `catalog-v1` Release；ABU Launcher 0.03 的 `releases/latest/download/plugins.json` 地址因此始终能取得最新目录。
+Pull Request 会自动检查插件目录、ID、全部版本、权限、排序和索引一致性，并下载每个历史版本的资产核对真实大小、SHA-256 与 Ed25519 签名。资产失效时检查失败，作者须恢复固定 Release 文件。合并到 `main` 后，GitHub Actions 会把最新版索引同步到固定的 `catalog-v1` Release；ABU Launcher 0.03 的 `releases/latest/download/plugins.json` 地址因此始终能取得最新目录。
 
 ## 许可证
 

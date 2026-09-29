@@ -21,6 +21,7 @@ jobs:
           node-version: 20
       - run: npm run build:index
       - run: npm run check:index
+      - run: npm run verify:assets
       - name: Update the stable catalog release
         run: gh release upload catalog-v1 plugins.json --clobber
         env:

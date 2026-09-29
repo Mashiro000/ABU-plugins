@@ -25,18 +25,18 @@
 
 ### 2. 创建并保管签名密钥
 
-在 `ABU-launcher` 仓库根目录运行：
+在你自己的插件项目目录运行 SDK 脚手架复制的发布命令（`--url` 必须是已经上传的固定标签 Release 资产地址）：
 
 ```bash
-node tools/sign-plugin.mjs path/to/plugin.abu-plugin path/to/private-key.pem
+node tools/publish.mjs --file dist/com.example.hello-1.0.0.abu-plugin --key .keys/publisher.pem --url https://github.com/YOU/REPO/releases/download/v1.0.0/com.example.hello-1.0.0.abu-plugin
 ```
 
-首次运行会生成 Ed25519 私钥，并输出：
+首次运行会生成 Ed25519 私钥，并输出 `publicKey` 与 `asset`（包含 `url`、字节数、SHA-256、签名）：
 
 ```json
 {
   "publicKey": "Base64 公钥",
-  "signature": "Base64 签名"
+  "asset": { "abi": "universal", "url": "固定下载地址", "size": 12345, "sha256": "64 位十六进制", "signature": "Base64 签名" }
 }
 ```
 
@@ -57,6 +57,7 @@ Get-FileHash plugin.abu-plugin -Algorithm SHA256
 ```
 
 Release 同时应链接对应源码、许可证和用户说明。不要使用会变化的 `latest/download` 作为插件资产地址；使用包含固定标签的永久 URL。
+上传后再运行一次发布命令核对 URL，并在本地用 `node tools/validate.mjs <包路径>` 校验 ZIP。提交 PR 时 CI 会实际下载每个版本资产，核对大小、SHA-256 和 Ed25519 签名；下载失败或资产被下架时 PR 不会通过。历史版本也要保持可下载。
 
 ### 4. 创建插件目录
 
@@ -129,7 +130,7 @@ npm run check:index
 2. 提升 `version`，使用同一私钥签署新的包。
 3. 创建新的固定标签 Release，不覆盖旧资产。
 4. 在原插件目录的 `versions/` 中新增 `<新版本>.json`，不要覆盖或删除旧版本。
-5. 运行生成与检查命令，提交 PR。
+5. 运行生成、索引检查和资产验证命令，提交 PR。
 
 旧 Release 应保留，以便已安装用户回滚和复核历史版本。
 
