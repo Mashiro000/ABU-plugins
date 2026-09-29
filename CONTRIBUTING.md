@@ -2,6 +2,8 @@
 
 本仓库接受第三方 JavaScript 插件。开发 API、示例和本地安装方式请先阅读 [ABU Plugin SDK 开发指南](https://github.com/Mashiro000/ABU-launcher/tree/main/plugin-sdk)。
 
+投稿前请先读 [兼容表](https://github.com/Mashiro000/ABU-launcher/blob/main/plugin-sdk/docs/COMPATIBILITY.md) 并在插件 README 标出最低宿主 APK/API。已发布 0.03 不支持 API 1.1 的多页面、媒体和设备新接口；相应新 APK 尚未正式发布时，请不要声称用户安装 0.03 即可运行这些插件。
+
 ## 收录范围
 
 可以提交 `ui`、`data_source`、`subtitle`、`system` 类型的沙箱插件。包含 APK、DEX、`.so` 或申请 `player` 类型的插件具有原生代码执行能力，目前只由 ABU 维护者发布。

@@ -15,6 +15,7 @@ ABU Launcher 0.03 及以上版本已默认配置本仓库。打开“设置 → 
 ## 开发与投稿
 
 - [从零开发 ABU 插件](https://github.com/Mashiro000/ABU-launcher/tree/main/plugin-sdk)
+- [宿主版本与 API 兼容表](https://github.com/Mashiro000/ABU-launcher/blob/main/plugin-sdk/docs/COMPATIBILITY.md)：API 1.1 的媒体、设备和复杂 UI 仍须等待相应新 APK；0.03 不具备这些能力。
 - [提交插件到官方库](CONTRIBUTING.md)
 - [`plugins/`](plugins/) 中每个插件拥有独立文件夹；`plugin.json` 保存公共信息，`versions/` 保存全部历史版本。
 - 每个插件目录的 `README.md` 和供应用读取的 `plugins.json` 都由脚本生成；版本按新到旧排列，应用索引只发布最新版。
