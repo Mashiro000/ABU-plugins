@@ -1,0 +1,10 @@
+{
+  "name": "abu-official-plugin-repository",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:index": "node scripts/build-index.mjs",
+    "check:index": "node scripts/validate-index.mjs"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "com.example.hello",
+  "name": "Hello ABU",
+  "version": "1.0.0",
+  "description": "一句话说明插件用途",
+  "kind": "ui",
+  "author": "作者名称",
+  "homepage": "https://github.com/example/hello-abu",
+  "source": "https://github.com/example/hello-abu/tree/v1.0.0",
+  "publicKey": "Base64 Ed25519 公钥",
+  "permissions": [],
+  "assets": [
+    {
+      "abi": "universal",
+      "url": "https://github.com/example/hello-abu/releases/download/v1.0.0/hello-1.0.0.abu-plugin",
+      "size": 12345,
+      "sha256": "64位小写十六进制 SHA-256",
+      "signature": "Base64 Ed25519 签名"
+    }
+  ]
+}

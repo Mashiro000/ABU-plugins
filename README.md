@@ -12,6 +12,21 @@
 
 ABU Launcher 0.03 及以上版本已默认配置本仓库。打开“设置 → 插件”即可查看并安装适用于当前设备的版本。
 
+## 开发与投稿
+
+- [从零开发 ABU 插件](https://github.com/Mashiro000/ABU-launcher/tree/main/plugin-sdk)
+- [提交插件到官方库](CONTRIBUTING.md)
+- [`catalog/`](catalog/) 中每个 JSON 文件对应一个插件；`plugins.json` 由脚本统一生成。
+
+提交前运行：
+
+```bash
+npm run build:index
+npm run check:index
+```
+
+Pull Request 会自动检查插件 ID、版本、权限、HTTPS 下载地址、SHA-256、公钥、签名和索引一致性。合并到 `main` 后，GitHub Actions 会把生成的索引同步到固定的 `catalog-v1` Release；ABU Launcher 0.03 的 `releases/latest/download/plugins.json` 地址因此始终能取得最新目录，不要求每个插件 Release 重复上传索引。
+
 ## 许可证
 
 索引与仓库构建配置采用 MIT License。MPV 插件包内包含独立的第三方许可与对应源码说明。

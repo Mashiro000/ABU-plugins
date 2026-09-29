@@ -1,0 +1,27 @@
+name: Publish plugin index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "catalog/**"
+      - "scripts/**"
+      - "plugins.json"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm run build:index
+      - run: npm run check:index
+      - name: Update the stable catalog release
+        run: gh release upload catalog-v1 plugins.json --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -1,0 +1,38 @@
+{
+  "id": "com.limi.player.mpv",
+  "name": "MPV 播放器内核",
+  "version": "1.0.0",
+  "description": "按需安装的 MPV 播放器内核。默认播放器仍为系统 Media3。",
+  "kind": "player",
+  "author": "ABU Launcher / media-kit contributors",
+  "homepage": "https://github.com/Mashiro000/ABU-plugins",
+  "source": "https://github.com/jarnedemeulemeester/libmpv-android/tree/v1.0.0",
+  "publicKey": "w1j1L0uDu/8xLDCp7zFp3EBTDDciFcwa/GCwFt8S7sI=",
+  "permissions": [
+    { "id": "media.playback", "title": "播放媒体地址", "sensitive": false },
+    { "id": "network.media", "title": "访问媒体服务器", "sensitive": true }
+  ],
+  "assets": [
+    {
+      "abi": "arm64-v8a",
+      "url": "https://github.com/Mashiro000/ABU-plugins/releases/download/mpv-v1.0.0/mpv-1.0.0-arm64-v8a.abu-plugin",
+      "size": 12083172,
+      "sha256": "ff79a8dc76d9cbe6e198c182860296b6f0f5c5253872b115468a9fd0b74b8564",
+      "signature": "z5rtJ896Esvk6yg7CYjzn8Tvnkc2TuWhgHH2uIMD4nBcJWc5g0B2rSJ2VU78NaE1RGeUomlndKiBw+hfC3wuBQ=="
+    },
+    {
+      "abi": "armeabi-v7a",
+      "url": "https://github.com/Mashiro000/ABU-plugins/releases/download/mpv-v1.0.0/mpv-1.0.0-armeabi-v7a.abu-plugin",
+      "size": 11416188,
+      "sha256": "16da5cdee21870c49ad29f5657d0c5eab4beaef77b349bd51e75251f72c25e69",
+      "signature": "0vH8HVo5YggDyMOAxRbQ3wRPshF82t9t1LHEs1uIhybqxoT7QC+itTbqlMoANoccBZJsNGH4Sv2TbDNYpAu0Cg=="
+    },
+    {
+      "abi": "x86_64",
+      "url": "https://github.com/Mashiro000/ABU-plugins/releases/download/mpv-v1.0.0/mpv-1.0.0-x86_64.abu-plugin",
+      "size": 12942619,
+      "sha256": "a0dae42fbdce05b17cfe2542c0cd945d6e095cd3f9ce35dc3ab31f972a92bfbf",
+      "signature": "5/agxgGYswgEBiiZLV0iYR7Kq1YHE5D3PtuWD78TxUJkn7XlEgVYvK8Kz0R3TTxY6VI6tgYld+INWBekQoh2BA=="
+    }
+  ]
+}
