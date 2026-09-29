@@ -1,17 +1,7 @@
 {
-  "id": "com.limi.player.mpv",
-  "name": "MPV 播放器内核",
   "version": "1.0.0",
-  "description": "按需安装的 MPV 播放器内核。默认播放器仍为系统 Media3。",
-  "kind": "player",
-  "author": "ABU Launcher / media-kit contributors",
-  "homepage": "https://github.com/Mashiro000/ABU-plugins",
+  "releasedAt": "2026-09-29",
   "source": "https://github.com/jarnedemeulemeester/libmpv-android/tree/v1.0.0",
-  "publicKey": "w1j1L0uDu/8xLDCp7zFp3EBTDDciFcwa/GCwFt8S7sI=",
-  "permissions": [
-    { "id": "media.playback", "title": "播放媒体地址", "sensitive": false },
-    { "id": "network.media", "title": "访问媒体服务器", "sensitive": true }
-  ],
   "assets": [
     {
       "abi": "arm64-v8a",

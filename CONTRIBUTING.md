@@ -58,22 +58,44 @@ Get-FileHash plugin.abu-plugin -Algorithm SHA256
 
 Release 同时应链接对应源码、许可证和用户说明。不要使用会变化的 `latest/download` 作为插件资产地址；使用包含固定标签的永久 URL。
 
-### 4. 添加 catalog 文件
+### 4. 创建插件目录
 
-Fork 本仓库，在 `catalog/<插件ID>.json` 新建文件。可复制 [`catalog/plugin-template.json.example`](catalog/plugin-template.json.example)。
+Fork 本仓库，为每个插件创建独立目录：
+
+```text
+plugins/<插件ID>/
+├── plugin.json
+├── README.md                 # 由构建脚本生成
+└── versions/
+    ├── 1.1.0.json
+    └── 1.0.0.json
+```
+
+可以复制 [`plugins/plugin-template/`](plugins/plugin-template/) 中的两个模板。`plugin.json` 保存所有版本共享的身份、作者、公钥和权限；`versions/<版本号>.json` 保存这个版本的发布日期、源码和下载资产。
+
+`plugin.json`：
 
 ```json
 {
   "id": "com.example.hello",
   "name": "Hello ABU",
-  "version": "1.0.0",
   "description": "插件功能说明",
   "kind": "ui",
   "author": "作者名称",
   "homepage": "https://github.com/example/hello-abu",
-  "source": "https://github.com/example/hello-abu/tree/v1.0.0",
+  "source": "https://github.com/example/hello-abu",
   "publicKey": "Base64 Ed25519 公钥",
-  "permissions": [],
+  "permissions": []
+}
+```
+
+`versions/1.0.0.json`：
+
+```json
+{
+  "version": "1.0.0",
+  "releasedAt": "2026-09-29",
+  "source": "https://github.com/example/hello-abu/tree/v1.0.0",
   "assets": [
     {
       "abi": "universal",
@@ -86,7 +108,7 @@ Fork 本仓库，在 `catalog/<插件ID>.json` 新建文件。可复制 [`catalo
 }
 ```
 
-普通 JavaScript 插件使用 `universal`。只有官方 native 插件才按 `arm64-v8a`、`armeabi-v7a`、`x86_64` 分包。
+普通 JavaScript 插件使用 `universal`。只有官方 native 插件才按 `arm64-v8a`、`armeabi-v7a`、`x86_64` 分包。构建脚本根据版本号自动从新到旧排序，因此不用手工维护顺序。
 
 ### 5. 生成并检查索引
 
@@ -95,7 +117,7 @@ npm run build:index
 npm run check:index
 ```
 
-`plugins.json` 必须与 `catalog/` 一同提交。CI 会再次执行相同检查。
+生成后的插件 `README.md` 和根目录 `plugins.json` 必须一同提交。CI 会再次执行相同检查。
 
 ### 6. 提交 Pull Request
 
@@ -106,7 +128,7 @@ npm run check:index
 1. 保持插件 `id` 和 `publicKey` 不变。
 2. 提升 `version`，使用同一私钥签署新的包。
 3. 创建新的固定标签 Release，不覆盖旧资产。
-4. 更新对应的 `catalog/<插件ID>.json`。
+4. 在原插件目录的 `versions/` 中新增 `<新版本>.json`，不要覆盖或删除旧版本。
 5. 运行生成与检查命令，提交 PR。
 
 旧 Release 应保留，以便已安装用户回滚和复核历史版本。

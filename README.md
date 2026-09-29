@@ -16,7 +16,8 @@ ABU Launcher 0.03 及以上版本已默认配置本仓库。打开“设置 → 
 
 - [从零开发 ABU 插件](https://github.com/Mashiro000/ABU-launcher/tree/main/plugin-sdk)
 - [提交插件到官方库](CONTRIBUTING.md)
-- [`catalog/`](catalog/) 中每个 JSON 文件对应一个插件；`plugins.json` 由脚本统一生成。
+- [`plugins/`](plugins/) 中每个插件拥有独立文件夹；`plugin.json` 保存公共信息，`versions/` 保存全部历史版本。
+- 每个插件目录的 `README.md` 和供应用读取的 `plugins.json` 都由脚本生成；版本按新到旧排列，应用索引只发布最新版。
 
 提交前运行：
 
@@ -25,7 +26,7 @@ npm run build:index
 npm run check:index
 ```
 
-Pull Request 会自动检查插件 ID、版本、权限、HTTPS 下载地址、SHA-256、公钥、签名和索引一致性。合并到 `main` 后，GitHub Actions 会把生成的索引同步到固定的 `catalog-v1` Release；ABU Launcher 0.03 的 `releases/latest/download/plugins.json` 地址因此始终能取得最新目录，不要求每个插件 Release 重复上传索引。
+Pull Request 会自动检查插件目录、ID、全部版本、权限、HTTPS 下载地址、SHA-256、公钥、签名、排序和索引一致性。合并到 `main` 后，GitHub Actions 会把最新版索引同步到固定的 `catalog-v1` Release；ABU Launcher 0.03 的 `releases/latest/download/plugins.json` 地址因此始终能取得最新目录。
 
 ## 许可证
 

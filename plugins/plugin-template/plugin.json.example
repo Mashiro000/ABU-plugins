@@ -1,0 +1,11 @@
+{
+  "id": "com.example.hello",
+  "name": "Hello ABU",
+  "description": "一句话说明插件用途",
+  "kind": "ui",
+  "author": "作者名称",
+  "homepage": "https://github.com/example/hello-abu",
+  "source": "https://github.com/example/hello-abu",
+  "publicKey": "Base64 Ed25519 公钥",
+  "permissions": []
+}

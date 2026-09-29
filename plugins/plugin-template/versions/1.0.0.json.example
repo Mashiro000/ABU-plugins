@@ -1,14 +1,7 @@
 {
-  "id": "com.example.hello",
-  "name": "Hello ABU",
   "version": "1.0.0",
-  "description": "一句话说明插件用途",
-  "kind": "ui",
-  "author": "作者名称",
-  "homepage": "https://github.com/example/hello-abu",
+  "releasedAt": "2026-09-29",
   "source": "https://github.com/example/hello-abu/tree/v1.0.0",
-  "publicKey": "Base64 Ed25519 公钥",
-  "permissions": [],
   "assets": [
     {
       "abi": "universal",

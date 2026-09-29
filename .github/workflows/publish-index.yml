@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "catalog/**"
+      - "plugins/**"
       - "scripts/**"
       - "plugins.json"
 

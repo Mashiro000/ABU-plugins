@@ -1,11 +1,14 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
+import { mergedVersion, readPluginFolders, renderPluginReadme } from "./plugin-catalog.mjs";
 
-const files = (await readdir("catalog"))
-  .filter((name) => name.endsWith(".json"))
-  .sort();
-const plugins = [];
-for (const file of files) {
-  plugins.push(JSON.parse(await readFile(`catalog/${file}`, "utf8")));
+const folders = await readPluginFolders();
+const latestPlugins = [];
+for (const plugin of folders) {
+  if (plugin.versions.length === 0) throw new Error(`${plugin.folder}: no versions found`);
+  latestPlugins.push(mergedVersion(plugin.metadata, plugin.versions[0]));
+
+  await writeFile(`plugins/${plugin.folder}/README.md`, renderPluginReadme(plugin));
 }
-await writeFile("plugins.json", `${JSON.stringify({ schemaVersion: 1, plugins }, null, 2)}\n`);
-console.log(`Generated plugins.json with ${plugins.length} plugin(s).`);
+
+await writeFile("plugins.json", `${JSON.stringify({ schemaVersion: 1, plugins: latestPlugins }, null, 2)}\n`);
+console.log(`Generated latest index and history pages for ${folders.length} plugin(s).`);
